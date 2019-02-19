@@ -41,7 +41,7 @@ def playGame():
         discBoard = fov.discover(playerPos, gameBoard, discBoard)
         graphics.renderAll(playerPos, ghosts, gameBoard, discBoard)
 
-        inp = getch()
+     
 
         time = time+1
 
@@ -50,16 +50,16 @@ def playGame():
         done = checkDone(discBoard, gameBoard)
         
         if dead:
-            print("you are dead. you survived for " + str(time) + " turns")
+            print("you are dead. you survived for " + str(time) + " turns. there were " + str(len(ghosts)) + " ghosts")
             return askToPlayAgain(getch)
         elif done:
             graphics.renderAll(playerPos, ghosts, gameBoard, discBoard)
             
-            print("you win! you did it in  " + str(time) + " turns")
+            print("you win! you did it in  " + str(time) + " turns. there were " + str(len(ghosts)) + " ghosts")
             return askToPlayAgain(getch)
         else:
             ghostMove(playerPos, ghosts, gameBoard)
-            playerPos = playerMove(playerPos,inp, gameBoard)
+            playerPos = playerMove(playerPos, gameBoard)
 
 def askToPlayAgain(getch):
     while(True):
@@ -102,24 +102,34 @@ def ghostMove(playerPos, ghosts, board):
         if wallCheck(newPos, board, 0,0):
             ghosts[i] = newPos
 
-def playerMove(pos, inp, board):
-    if inp.lower() == 'q':
-        exit(0)
+def playerMove(pos, board):
 
-    if inp.lower() == 'l':
-        print("hi laurie!")
-        playerMove(pos, getch(), board)
+    while True:
 
-    if inp.lower() == 'w' and wallCheck(pos, board, 0, -1):
-        pos = (pos[0],pos[1]-1)
-    if inp.lower() == 's' and wallCheck(pos, board, 0,  1):
-        pos = (pos[0],pos[1]+1)
-    if inp.lower() == 'a' and wallCheck(pos, board, -1, 0):
-        pos = (pos[0]-1,pos[1])
-    if inp.lower() == 'd' and wallCheck(pos, board, +1, 0):
-        pos = (pos[0]+1,pos[1])
+        inp = getch()
+        
+        if inp.lower() == 'q':
+            exit(0)
 
-    return pos
+        if inp.lower() == 'l':
+            print("hi laurie!")
+
+        if inp.lower() == 'w' and wallCheck(pos, board, 0, -1):
+            pos = (pos[0],pos[1]-1)
+            return pos
+            
+        if inp.lower() == 's' and wallCheck(pos, board, 0,  1):
+            pos = (pos[0],pos[1]+1)
+            return pos
+            
+        if inp.lower() == 'a' and wallCheck(pos, board, -1, 0):
+            pos = (pos[0]-1,pos[1])
+            return pos
+            
+        if inp.lower() == 'd' and wallCheck(pos, board, +1, 0):
+            pos = (pos[0]+1,pos[1])
+            return pos
+
 
 def wallCheck(pos, board, x, y):
     if(board[pos[0]+x][pos[1]+y] == 0):
