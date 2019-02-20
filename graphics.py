@@ -33,17 +33,19 @@ def renderAll(playerPos, ghosts, board, discBoard):
 
 def printBoard(board, playerPos, discBoard):
 
+    bufferString = ''
 
     for y in range(len(board[0])):
         for x in range(len(board)):
 
                 if discBoard[x][y] == 0:
-                    print(COLOR_CODES[99] + RESET, end = '')
+                    bufferString += COLOR_CODES[99] + RESET
                 else:
                     if not fov.visible(playerPos, (x,y), board ):
-                        print(COLOR_CODES[board[x][y]] + RESET, end='')
+                        bufferString += COLOR_CODES[board[x][y]] + RESET
                     else:
-                        print(COLOR_CODES[board[x][y]+10] + RESET, end='')
-        print()
+                        bufferString += COLOR_CODES[board[x][y]+10] + RESET
+        bufferString += "\n"
+    print(bufferString)
             
     
