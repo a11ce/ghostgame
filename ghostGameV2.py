@@ -57,7 +57,7 @@ def playGame():
             graphics.renderAll(playerPos, ghosts, gameBoard, discBoard)
             
             print("you win! you did it in  " + str(time) + " turns. there were " + str(len(ghosts)) + " ghosts")
-            print("your score is " + str(score(time)))
+            print("your score is " + str(score(time, len(ghosts))))
             
             return askToPlayAgain(getch)
         else:
@@ -92,9 +92,9 @@ def checkDone(discBoard, gameBoard):
                 return False
     return True
 
-def score(t):
+def score(t, ghostNum):
     screenSize = (SCREEN_HEIGHT-HUD_HEIGHT)
-    return 1000 * (screenSize / t)
+    return int(1000 * (screenSize / t) * ((ghostNum + 2)/3))
 
 def ghostMove(playerPos, ghosts, board):
     for i in range(len(ghosts)):
