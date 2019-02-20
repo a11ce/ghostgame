@@ -9,14 +9,15 @@ import fov
 from getch import getch
 
 SCREEN_WIDTH = 80   #80
-SCREEN_HEIGHT = 45 #45
-HUD_HEIGHT = 5
+SCREEN_HEIGHT = 40 #40
+HUD_HEIGHT = 1 # currently just time
 
 ROOM_MIN_SIZE = 6
 ROOM_MAX_SIZE = 10
 MAX_ROOMS = 100
 
-        
+DEBUG = False
+
 def main():
     playAgain = True
     while playAgain:
@@ -35,18 +36,18 @@ def playGame():
 
     dead = False
     done = False
-    while not (dead or done) :
+    while not (dead or done):
         #print('\033c')
         
         discBoard = fov.discover(playerPos, gameBoard, discBoard)
         graphics.renderAll(playerPos, ghosts, gameBoard, discBoard)
-
+        print("Turns: " + str(time))
      
 
         time = time+1
 
 
-        dead = checkDead(playerPos, ghosts)
+        dead = checkDead(playerPos, ghosts) and not DEBUG
         done = checkDone(discBoard, gameBoard)
         
         if dead:
@@ -56,6 +57,8 @@ def playGame():
             graphics.renderAll(playerPos, ghosts, gameBoard, discBoard)
             
             print("you win! you did it in  " + str(time) + " turns. there were " + str(len(ghosts)) + " ghosts")
+            print("your score is " + str(score(time)))
+            
             return askToPlayAgain(getch)
         else:
             ghostMove(playerPos, ghosts, gameBoard)
@@ -89,6 +92,10 @@ def checkDone(discBoard, gameBoard):
                 return False
     return True
 
+def score(t):
+    screenSize = (SCREEN_HEIGHT-HUD_HEIGHT)
+    return 1000 * (screenSize / t)
+
 def ghostMove(playerPos, ghosts, board):
     for i in range(len(ghosts)):
         ghost = ghosts[i]
@@ -120,23 +127,27 @@ def playerMove(pos, board):
         if inp.lower() == 'l':
             print("hi laurie!")
 
+        if inp.lower() == 'v':
+            global DEBUG 
+            DEBUG = not DEBUG
+
         if inp.lower() == 'w':
-            if wallCheck(pos, board, 0, -1):
+            if wallCheck(pos, board, 0, -1) or DEBUG:
                 pos = (pos[0],pos[1]-1)
             return pos
             
         if inp.lower() == 's':
-            if wallCheck(pos, board, 0,  1):
+            if wallCheck(pos, board, 0,  1) or DEBUG:
                 pos = (pos[0],pos[1]+1)
             return pos
             
         if inp.lower() == 'a':
-            if wallCheck(pos, board, -1, 0):
+            if wallCheck(pos, board, -1, 0) or DEBUG:
                 pos = (pos[0]-1,pos[1])
             return pos
             
         if inp.lower() == 'd':
-            if wallCheck(pos, board, +1, 0):
+            if wallCheck(pos, board, +1, 0) or DEBUG:
                 pos = (pos[0]+1,pos[1])
             return pos
 
