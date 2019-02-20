@@ -120,20 +120,24 @@ def playerMove(pos, board):
         if inp.lower() == 'l':
             print("hi laurie!")
 
-        if inp.lower() == 'w' and wallCheck(pos, board, 0, -1):
-            pos = (pos[0],pos[1]-1)
+        if inp.lower() == 'w':
+            if wallCheck(pos, board, 0, -1):
+                pos = (pos[0],pos[1]-1)
             return pos
             
-        if inp.lower() == 's' and wallCheck(pos, board, 0,  1):
-            pos = (pos[0],pos[1]+1)
+        if inp.lower() == 's':
+            if wallCheck(pos, board, 0,  1):
+                pos = (pos[0],pos[1]+1)
             return pos
             
-        if inp.lower() == 'a' and wallCheck(pos, board, -1, 0):
-            pos = (pos[0]-1,pos[1])
+        if inp.lower() == 'a':
+            if wallCheck(pos, board, -1, 0):
+                pos = (pos[0]-1,pos[1])
             return pos
             
-        if inp.lower() == 'd' and wallCheck(pos, board, +1, 0):
-            pos = (pos[0]+1,pos[1])
+        if inp.lower() == 'd':
+            if wallCheck(pos, board, +1, 0):
+                pos = (pos[0]+1,pos[1])
             return pos
 
 
