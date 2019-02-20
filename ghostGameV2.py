@@ -99,8 +99,14 @@ def ghostMove(playerPos, ghosts, board):
             newPos = (ghost[0], ghost[1] + (1 if distance[1]>0 else -1)  )
         else:
             newPos = (ghost[0] + (1 if distance[0] > 0 else -1), ghost[1])    
-        if wallCheck(newPos, board, 0,0):
+        if wallCheck(newPos, board, 0,0) and (not hasGhost(newPos, ghosts)):
             ghosts[i] = newPos
+            
+def hasGhost(point, ghosts):
+    for ghost in ghosts:
+        if point == ghost:
+            return True
+    return False
 
 def playerMove(pos, board):
 
