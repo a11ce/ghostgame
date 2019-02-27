@@ -1,6 +1,6 @@
 from random import randint
 
-GHOST_SPAWN_RATE = 75 #75 , spawn if rand(0,100) higher than rate
+NUM_GHOSTS = 6
 
 def generateGameBoard(mapWidth, mapHeight, maxRooms, minSize, maxSize):
 
@@ -47,7 +47,7 @@ def generateGameBoard(mapWidth, mapHeight, maxRooms, minSize, maxSize):
                 for y in range(cSize[1]):
                     board[cOrigin[0]+x][cOrigin[1]+y] = 0
 
-            if(randint(0,100)>GHOST_SPAWN_RATE):
+            if(len(ghosts) < NUM_GHOSTS):
                 ghosts.append(cCenter)
 
             prevCenter = cCenter 
