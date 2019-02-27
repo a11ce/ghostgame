@@ -51,7 +51,7 @@ def playGame():
         done = checkDone(discBoard, gameBoard)
         
         if dead:
-            print("you have died of ghost! you survived for " + str(time) + " turns. there were " + str(len(ghosts)) + " ghosts")
+            print("you have died of ghost! you survived for " + str(time) + " turns.")
             return askToPlayAgain(getch)
         elif done:
             graphics.renderAll(playerPos, ghosts, gameBoard, discBoard)

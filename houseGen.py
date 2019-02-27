@@ -34,6 +34,9 @@ def generateGameBoard(mapWidth, mapHeight, maxRooms, minSize, maxSize):
         if clearToPlace(cOrigin, cSize, board):        
             if i == 0:
                 playerFirst= cCenter
+            elif (len(ghosts) < NUM_GHOSTS):
+                ghosts.append(cCenter)            
+
         
             else:        
                 if(randint(0,1)):
@@ -47,8 +50,7 @@ def generateGameBoard(mapWidth, mapHeight, maxRooms, minSize, maxSize):
                 for y in range(cSize[1]):
                     board[cOrigin[0]+x][cOrigin[1]+y] = 0
 
-            if(len(ghosts) < NUM_GHOSTS):
-                ghosts.append(cCenter)
+
 
             prevCenter = cCenter 
 
