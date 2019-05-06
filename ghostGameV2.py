@@ -2,14 +2,18 @@
 
 import random
 import math
+import shutil
 
 import houseGen
 import graphics
 import fov
 from getch import getch
 
-SCREEN_WIDTH = 80   #80
-SCREEN_HEIGHT = 40 #40
+termSize = shutil.get_terminal_size((80,40)) #defaults
+
+
+SCREEN_WIDTH = termSize[0]
+SCREEN_HEIGHT = termSize[1]-2
 HUD_HEIGHT = 1 # currently just time
 
 ROOM_MIN_SIZE = 6
