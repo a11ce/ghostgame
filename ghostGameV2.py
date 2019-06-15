@@ -85,7 +85,7 @@ def checkDead(playerPos, ghosts):
     
     for ghost in ghosts:
         #print(ghost)
-        if(playerPos[0] == ghost[0] and playerPos[1] == ghost[1]):
+        if(playerPos[0] == ghost[0] and playerPos[1] == ghost[1]) and not DEBUG:
             return True
     return False
 
@@ -154,6 +154,7 @@ def playerMove(pos, board):
             if wallCheck(pos, board, +1, 0) or DEBUG:
                 pos = (pos[0]+1,pos[1])
             return pos
+        
 
 
 def wallCheck(pos, board, x, y):
