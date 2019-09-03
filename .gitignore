@@ -1,1 +1,5 @@
-__pycache__/*
+__pycache__/*__pycache__/colors.cpython-37.pyc
+__pycache__/fov.cpython-37.pyc
+__pycache__/getch.cpython-37.pyc
+__pycache__/graphics.cpython-37.pyc
+__pycache__/houseGen.cpython-37.pyc
