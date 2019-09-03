@@ -31,3 +31,9 @@ A game in which you explore a house and run away from ghosts.
 --- 
 - `ghostGameV1.py`: First version of ghostGame, buggy and relies on tdl. Also a hard-to-edit mess.
 - `colors.py`: Color definitions for `ghostGameV1.py`
+
+---
+
+All contributions are welcome by pull request or issue.
+
+ghostGame is licensed under GNU General Public License v3.0. See [LICENSE](../master/LICENSE) for full text.
