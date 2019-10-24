@@ -23,14 +23,14 @@ A game in which you explore a house and run away from ghosts.
 
 ## File summary
 
-- `ghostGameV2.py`: Game logic and main loop, including movement
-- `houseGen.py`: Map generator
+- `ghostGameV2.py`: Game logic and main loop, including movement.
+- `houseGen.py`: Map generator.
 - `graphics.py`: Console rendering of the map, player, ghosts, and HUD. Easily replaceable to add sprite graphics.
-- `fov.py`: Visibility and field of view calculations for the torch, and discovery
-- `getch.py`: Cross-platform getch-like function. See URL at top of file
+- `fov.py`: Visibility and field of view calculations for the torch, and discovery.
+- `getch.py`: Cross-platform getch-like function. See URL at top of file.
 --- 
 - `ghostGameV1.py`: First version of ghostGame, buggy and relies on tdl. Also a hard-to-edit mess.
-- `colors.py`: Color definitions for `ghostGameV1.py`
+- `colors.py`: Color definitions for `ghostGameV1.py`.
 
 ---
 
