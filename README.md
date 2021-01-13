@@ -1,6 +1,6 @@
 # ghostGame
 
-A game in which you explore a house and run away from ghosts.
+> A game in which you explore a house and run away from ghosts.
 
 ## Setup
 
